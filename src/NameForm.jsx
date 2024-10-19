@@ -1,53 +1,47 @@
 import React, { useState } from 'react';
-import './NameForm.css';
 
 const NameForm = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [fullName, setFullName] = useState('');
-  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (firstName.trim() === '' || lastName.trim() === '') {
-      setError('Please fill in both first and last name.');
-      setFullName('');
-    } else {
-      setError(''); 
+    e.preventDefault(); 
+
+    if (firstName.trim() && lastName.trim()) {
       setFullName(`${firstName} ${lastName}`); 
+    } else {
+      setFullName(''); 
     }
   };
 
   return (
-    <div className="form-container">
+    <div style={{ margin: '20px' }}>
+      <h1>Name Submission Form</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input 
-            type="text" 
-            value={firstName} 
-            onChange={(e) => setFirstName(e.target.value)} 
-            placeholder="Enter first name" 
-          />
-        </label>
-        <label>
-          Last Name:
-          <input 
-            type="text" 
-            value={lastName} 
-            onChange={(e) => setLastName(e.target.value)} 
-            placeholder="Enter last name" 
-          />
-        </label>
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+          style={{ margin: '10px 0', padding: '10px', width: '200px', display: 'block' }} 
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+          style={{ margin: '10px 0', padding: '10px', width: '200px', display: 'block' }}
+        />
+        <button type="submit" style={{ padding: '10px 20px', marginTop: '10px' }}>
+          Submit
+        </button>
       </form>
-
-      {error && <p className="error">{error}</p>} 
-      
-      {fullName && <h2>Full Name: {fullName}</h2>}  
+      {fullName && <h2 style={{ marginTop: '20px' }}>Full Name: {fullName}</h2>}
     </div>
   );
 };
 
 export default NameForm;
-
