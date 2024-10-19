@@ -1,13 +1,14 @@
 import React from 'react';
-import NameForm from './NameForm';
+import ReactDOM from 'react-dom';
+import NameForm from './NameForm'; 
 
-function App() {
-  return (
-    <div className="App">
-      <NameForm />
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+            <NameForm />
+        </div>
+    );
+};
 
 export default App;
-
+ReactDOM.render(<App />, document.getElementById('root'));
