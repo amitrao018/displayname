@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import './NameForm.css';  // For styling
 
 const NameForm = () => {
-  const [firstName, setFirstName] = useState('');  // For storing first name
-  const [lastName, setLastName] = useState('');    // For storing last name
-  const [fullName, setFullName] = useState('');    // For displaying full name after submission
-  const [error, setError] = useState('');          // To display validation error message
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [error, setError] = useState('');         
 
-  // Handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();  // Prevent default form behavior
-
-    // Validate input fields
+    e.preventDefault();
     if (firstName.trim() === '' || lastName.trim() === '') {
       setError('Please fill in both first and last name.');
+      setFullName(''); 
     } else {
       setError('');
-      setFullName(`${firstName} ${lastName}`);  // Set full name
+      setFullName(`${firstName} ${lastName}`);
     }
   };
 
@@ -44,9 +42,9 @@ const NameForm = () => {
         <button type="submit">Submit</button>
       </form>
 
-      {error && <p className="error">{error}</p>}  {/* Show error message if any */}
+      {error && <p className="error">{error}</p>} 
       
-      {fullName && <h2>Full Name: {fullName}</h2>}  {/* Display full name after successful submission */}
+      {fullName && <h2>Full Name: {fullName}</h2>}  
     </div>
   );
 };
