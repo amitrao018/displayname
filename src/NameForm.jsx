@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
 const NameForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -6,12 +7,13 @@ const NameForm = () => {
   const [fullName, setFullName] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault(); // Prevent page reload on form submission
 
+    // Validate input fields
     if (firstName.trim() && lastName.trim()) {
-      setFullName(`${firstName} ${lastName}`); 
+      setFullName(`${firstName} ${lastName}`); // Set full name if both fields are filled
     } else {
-      setFullName(''); 
+      setFullName(''); // Clear full name if validation fails
     }
   };
 
@@ -25,7 +27,7 @@ const NameForm = () => {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
-          style={{ margin: '10px 0', padding: '10px', width: '200px', display: 'block' }} 
+          style={{ margin: '10px 0', padding: '10px', width: '200px', display: 'block' }}
         />
         <input
           type="text"
@@ -45,3 +47,4 @@ const NameForm = () => {
 };
 
 export default NameForm;
+ReactDOM.render(<NameForm />, document.getElementById('root'));
