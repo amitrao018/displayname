@@ -17,7 +17,7 @@ const NameForm = () => {
 
   return (
     <div style={{ margin: '20px' }}>
-      <h1>Name Submission Form</h1>
+      <h1>Full Name Display</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
